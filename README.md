@@ -43,6 +43,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+```
 **Запустите**:
 pip install -r requirements.txt
 python manage.py migrate
