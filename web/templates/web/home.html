@@ -1,0 +1,336 @@
+
+{% extends "web/base.html" %}
+{% load static %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <!-- Display username if the user is logged in -->
+        <p>Вы вошли в систему как - {{ request.user.username }}</p>
+        
+        <!-- Add a logout button -->
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Выйти</button>
+        </form>
+    {% endif %}
+    <div class="edudirection">
+        <h1 class="main-heading">Поднимайте свой уровень владения языком <span class="highlight">быстро</span> и <span class="highlight">эффективно</span>!</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="header">
+                        <h1>для путешествий</h1>
+                        <img src="static/traveling.png" width="50",height="50">
+                    </div>
+                    <div class="body">
+                        <h1 class="name">Travel anywhere</h1>
+                        <p class="statement">Откройте мир не только глазами, но и сердцем, общайся с его людьми и погружайся в культуру с нашим курсом.</p>
+                        <a href="" class="how">Подробнее &#8594;</a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="header">
+                        <h1>для работы</h1>
+                        <img src="static/aaa.png" width="50",height="50">
+                    </div>
+                    <div class="body">
+                        <h1 class="name">Step up your game</h1>
+                        <p class="statement">Увеличьте свои шансы. Владейте общением с зарубежными коллегами.</p>
+                        <a href="" class="how">Подробнее &#8594;</a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="header">
+                        <h1>для физтеха</h1>
+                        <img src="static/itguy.png" width="50",height="50">
+                    </div>
+                    <div class="body">
+                        <h1 class="name">Code up your career</h1>
+                        <p class="statement">Английский для инженеров и информационных технологий: Вступайте в мировой рынок,
+                            держитесь впереди с новейшими технологиями.</p>
+                        <a href="" class="how">Подробнее &#8594;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- featured categories -->
+
+
+    <div class="whyenglish">
+        <div class="col-3">
+            <img src="static/graphstudy.png">
+        </div>
+        <div class="col-3">
+            <div class="box">
+                <h1 class="why">Почему нужно учить английский <span class="highlight">сейчас</span>, а не позже?</h1>
+                <h1 class="explain">Исследования показывают, что способность 
+                    к изучению новых языков <span class="highlight">уменьшается</span> с возрастом.</h1>
+            
+                <small>С возрастом, мозг становится менее податливым к новым языкам, и взрослым может потребоваться больше времени и усилий, чтобы 
+                    достичь того же уровня владения языком, 
+                    который дети могут достичь сравнительно быстро. Но это не мешает взрослым успешно учить языки. 
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="introduction">
+        <h1>Комфортный онлайн формат. Учитесь в <span class="highlight">любом месте</span> и в <span class="highlight">любое время</span>.</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-5">
+                    <div class="icon">
+                        <div class="image-container">
+                            <img src="static/earth.png" height="90" width="90">
+                        </div>
+                        <p>Онлайн-формат</p>
+                        <small>Учитесь в реальном времени везде, где вам удобно.</small>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="icon">
+                        <div class="image-container">
+                            <img src="static/nodownload.png" height="90" width="90">
+                        </div>
+                        <p>Не надо скачать</p>
+                        <small>Сделаем ваше обучение максимально комфортным и легким.</small>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="icon">
+                        <div class="image-container">
+                            <img src="static/plan.png" height="90" width="90">
+                        </div>
+                        <p>Индивидуальный план</p>
+                        <small>Удовлетворение различных потребностей и интересов.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <div class="icon">
+                        <div class="image-container">
+                            <img src="static/twoguys.png" height="90" width="90">
+                        </div>
+                        <p>Навыки для реальной жизни</p>
+                        <small>Никакой теории, нудных учебников.
+                            Только то,<br> что вам нужно для использования в реальной жизни.</small>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="icon">
+                        <div class="image-container">
+                            <img src="static/fastresult.png" height="90" width="90">
+                        </div>
+                        <p>Заметные результаты</p>
+                        <small>Наши эффективные методы помогут вам
+                            учиться правильным <br>образом шаг за шагом, не тратя ваше время впустую.</small>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="icon">
+                        <div class="image-container">
+                            <img src="static/growth.png" height="90" width="90">
+                        </div>
+                        <p>Заметные результаты</p>
+                        <small>Мы следим за вашим прогрессом, мы<br>
+                        сопровождаем каждый шаг вашего обучения,<br>
+                        чтобы убедиться, что вы растете.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------Price ---------->
+    <div class="Price">
+        <div class="container">
+            <h1>Выберите подходящий план</h1>
+            <div class="row">
+                <div class="col-7">
+                    <img src="static/knight.png" height="50">
+                    <h1 class="plans">Плюс</h1>
+                    <div class="col-price">
+                        <p>950 &#8381;</p>
+                        <small>за урок</small>
+                    </div>
+                    <div class="time">
+                        <p>Занятия по 60 минут</p>
+                    </div>
+                    <div class="teacher">
+                        <p>Сильные преподаватели</p>
+                    </div>
+                    <div class="cancelation">
+                        <p>бесплатно перенести урок не позднее 
+                            <br>чем за 6 часов до начала занятия</p>
+                    </div>
+                    <div class="support">
+                        <p>Поддержа в чате</p>
+                    </div>
+                    <a href="{% url 'info_form_view' %}" class="btn-2">я хочу это!</a>
+
+                </div>
+                <div class="col-7-2">
+                    <img src="static/rook.png" height="50">
+                    <h1 class="plans">&nbsp;Усиленный</h1>
+                    <div class="col-price">
+                        <p>&nbsp;1200 &#8381;</p>
+                        <small>&nbsp; за урок</small>
+                    </div>
+                    <div class="time">
+                        <p>&nbsp; Занятия по 60 минут</p>
+                    </div>
+                    <div class="teacher">
+                        <p>&nbsp; Сильные преподаватели с опытом</p>
+                    </div>
+                    <div class="cancelation">
+                         <p>&nbsp; бесплатно перенести урок не позднее 
+                            <br>&nbsp; чем за 3 часа до начала занятия</p>
+                    </div>
+                    <div class="support">
+                        <p>&nbsp; Групповой наставник</p>
+                    </div>
+                    <a href="{% url 'info_form_view' %}" class="btn-2">я хочу это!</a>
+                </div>
+                <div class="col-7">
+                    <img src="static/king.png" height="50">
+                    <h1 class="plans">Интенсивный</h1>
+                    <div class="col-price">
+                        <p>1600 &#8381;</p>
+                        <small>за урок</small>
+                    </div>
+                    <div class="time">
+                        <p>Занятия по 60 минут</p>
+                    </div>
+                    <div class="teacher">
+                        <p>Сильные преподаватели</p>
+                    </div>
+                    <div class="cancelation">
+                        <p>бесплатно перенести урок не позднее 
+                            <br>чем за 1 час до начала занятия<br>
+                            +1 раз в месяц бесплатно перенести урок срочно</p>
+                    </div>
+                    <div class="support">
+                        <p>Персональный наставник</p>
+                    </div>
+                    <a href="{% url 'info_form_view' %}" class="btn-2">я хочу это!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- -----Easy steps to learning -->
+    <div class="steps">
+        <div class="container-steps">
+            <h1>3 простых шага к обучению</h1>   
+            <div class="row-steps">
+                <div class="col-8">
+                    <img src="static/email.png" height="70">   
+                    <h1>Первый шаг</h1>
+                    <p>Оставьте заявку. Мы свяжемся с вами.</p>              
+                </div>
+                <div class="col-8">
+                    <img src="static/arrow.png" height="50">  
+                </div>
+                <div class="col-8">
+                    <img src="static/call.png" height="70">   
+                    <h1>&nbsp; &nbsp; &nbsp; &nbsp;Второй шаг</h1>
+                    <p>Мы проконсультируем вас и поможем <br>
+                        выбрать подходящий план в соответствии<br> 
+                        с вашими потребностями, а также составим<br>
+                        расписание занятий.
+                    </p>              
+                </div>
+                <div class="col-8">
+                    <img src="static/arrow.png" height="50">  
+                </div>
+                <div class="col-8">
+                    <img src="static/computer.png" height="70">   
+                    <h1>Последний шаг</h1>
+                    <p>Погрузитесь в английский и присоединитесь<br>
+                         к мировому рынку вместе
+                        <br>с нашими преподавателями!</p>              
+                </div>
+
+
+            </div>
+        </div> 
+    </div>
+    <!--  new learning format:IT in English -->
+    <div class="it-in-english">
+        <h1>Попробуйте новый формат: изучение программирования на английском!</h1>
+        <div class="container-it-in-english">
+            <div class="header-it">
+                
+                <p>Для взрослых и подростков</p>
+                <img src="" alt="">
+                <p class="a">Этот курс ведут эксперты в области информационных технологий, 
+                    <br>которые свободно владеют английским и обучены преподаванию.<p>
+            </div>
+            <div class="body-it">
+                <!-- Add image here..... -->
+                <div class="introduction-it">
+                    <h1>IT профессия</h1>
+                    <p>Безусловно, IT сейчас в высоком спросе.
+                        Программист - одна из самых высокооплачиваемых профессий в мире
+                         Большинство языков программирования используют английский.
+                         Знание английского - ключ к доступу к мировому развитию технологий
+                         и высокооплачиваемому мировому рынку труда. Мы научим вас
+                         английскому и программированию (на английском), чтобы вы могли зарабатывать на 
+                         этом в любой точке мира.</p>
+                    <p class="b">наш опыт показывает, что научиться программировать на английском языке гораздо эффективнее</p>
+                    <!-- <p class="effectiveness"></p> -->
+                </div>
+
+                <div class="explanation-nothard">
+                    <h1>Сложно ли изучать программирование на английском?</h1>
+                    <style>
+                        p a {
+                            text-decoration: underline;
+                            color: #0000EE; 
+                        }
+                    </style>
+                    
+                    <p>
+                        Факт в том, что изучение технических предметов на английском проще, чем вы думаете.
+                        Это может быть даже легче, чем разговорный английский, с которым многим бывает трудно.
+                        Наши СЕКРЕТЫ помогут вам достичь этого моментально. Учитесь прямо сейчас!
+                        <a href="#" class="button">Покажи мне, как?</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- testimonial -->
+    <div class="lovefromstudents">
+        <h1 class="letread">
+            <span class="highlight">Любовь</span> от наших учеников &#9786;
+        </h1>
+        <div class="small-container">
+            <div class="row">
+                <div class="col-6">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Отличные преподаватели. Раньше я даже не мог понять ни слова во время просмотра фильма. 
+                        Теперь я понимаю английский, даже не нуждаясь в переводе. 
+                        Это так естественно. Спасибо за все.</p>
+                    <img src="static/eeee.png" height="50" width="50">
+                    <h3>The real world</h3>
+                </div>  
+                <div class="col-6">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Отличные преподаватели. Раньше я даже не мог понять ни слова во время просмотра фильма. 
+                        Теперь я понимаю английский, даже не нуждаясь в переводе. 
+                        Это так естественно. Спасибо за все.</p>
+                    <img src="static/eeee.png" height="50" width="50">
+                    <h3>Andrew Tate</h3>
+                </div>
+                <div class="col-6">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Отличные преподаватели. Раньше я даже не мог понять ни слова во время просмотра фильма. 
+                        Теперь я понимаю английский, даже не нуждаясь в переводе. 
+                        Это так естественно. Спасибо за все.</p>
+                    <img src="static/eeee.png" height="50" width="50">
+                    <h3>Trisian Tate</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content%}

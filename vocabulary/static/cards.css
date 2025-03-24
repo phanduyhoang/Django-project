@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+.header{
+    display: flex;
+    align-items: center;
+}
+.header .container{
+    width:100%;
+    padding: 2vh 3vw 1vh 3vw;
+}
+.navbar {
+    width: 100%;
+    margin-right:100px;
+    display: flex;
+    align-items: center;
+    padding:0 5px;
+    /* padding-top: 10px; */
+    /* background-color: rgba(255, 229, 229, 1); 
+    backdrop-filter: blur(10px); 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; */
+    /* border-radius: 0 0 20px 20px;  */
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul {
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+p {
+    color: #555;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* justify-content: space-around; Remove this property */
+    /* min-width: 50%; */
+    margin: 0 auto; 
+}
+.row-product {
+    display: flex;
+    align-items: center;
+    
+    /* justify-content: space-around; Remove this property */
+    /* min-width: 80%; */
+    margin: 0 auto; 
+}
+.row-mobile {
+    display: none;
+}
+.categories{
+    margin:70px 0;
+}
+/* .col-3 {
+    flex-basis: 30%;
+    min-width: 250px;
+    margin-bottom: 30px;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+} */
+.mob-col-3 {
+    display:flex;
+    justify-content: center; /* Center the button horizontally */
+    align-items: center; /* Center the button vertically */
+    text-align: center; /* Center the text content */
+}
+
+.col-3 img {
+    object-fit: cover;
+    width: 100%;
+    height: auto; /* Adjusted height for larger images while maintaining the aspect ratio */
+}
+
+.col-3-text-btn p{
+    color: #fffce3;
+    font-weight: 500;
+    font-size: 1.2vw;
+    line-height: 1.4;
+    margin-top: 2vh;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.col-3-text-btn {
+    display: flex;
+    flex-direction: column; /* Arrange children in a column */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center;
+}
+
+.col-3-text-btn .btn {
+    /* Make sure the button is a block element to center it properly */
+    display: flex;
+    /* Center the button horizontally within its container */
+    margin: 0 auto;
+    /* Additional styles */
+    background: rgb(161, 22, 22);
+    color: white;
+    padding: 8px 30px;
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.col-3-text-btn .btn:hover {
+    background: rgba(56, 56, 56, 0.459);
+}
+.small-container{
+    max-width: 100%;
+    margin: auto;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    text-align: center;
+ }
+
+ .col-4 {
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+.col-4 {
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex;
+    box-sizing: border-box;
+}
+
+.image-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 15px;
+}
+.best-price-label {
+    position: absolute;
+    top: 9px;
+    left: 13px;
+    background-color: #0b6de3;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 4px;
+
+}
+
+.best-price-label .fa-fire {
+    margin-right: 5px; /* Space between fire icon and text */
+    color: #FFFFFF;
+}
+
+.mob-image-container {
+    position: relative;
+}
+
+.mob-image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.col-4 a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.col-4 a:hover {
+    text-decoration: none;
+}
+.col-4 .text-content {
+    text-align: center;
+}
+
+.col-4 .rating {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+}
+.col-4 .text-content >p{
+    font-size: 17px;
+    font-weight: 500;
+    /* background-color: #0099ff; Set the background color */
+    color: #e8e8e8; /* Set the text color to white */
+    padding: 1px 4px; /* Add padding for spacing */
+    border-radius: 4px; /* Add rounded corners */
+    display: inline-block; 
+}
+.col-4 .rating p {
+    margin-left: 5px;
+    font-weight: 400;
+}
+.product-rating .fas.fa-star,
+.product-rating .fas.fa-star-half-alt,
+.product-rating .far.fa-star {
+    font-size: 14px; /* Adjust the font size as needed */
+}
+.title{
+    text-align: center;
+    margin:0 auto 80px;
+    position:relative;
+    line-height:60px;
+    color:#ffffff;
+    font-size:40px;
+}
+
+.title::after{
+    content:'';
+    background:#ff523b;
+    width:80px;
+    height: 5px;
+    border-radius:5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h4{
+    color: #1d1d1d;
+    font-weight: normal;
+    font-size: 17px;
+    padding-left: 10%;
+    text-align: left;
+}
+.col-4 p{
+    font-size:14px;
+}
+
+.rating fa{
+    color:#ff523b;
+}
+
+.col-4:hover{
+    transform: translateY(-5px);
+}
+.review-count {
+    color: rgb(240 240 240);
+    font-size: 13px;
+}
+.rating-color {
+    color: #ffbd57;
+}
+
+/* Basic styling for the button */
+.add-to-cart-wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.listen-button {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    padding: 7px 15px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Remove underline by default */
+}
+.fa-shopping-cart{
+    color:white;
+}
+.add-to-cart-btn:hover {
+    background-color: #ff4343b4; /* Darker background color on hover */
+}
+
+.add-to-cart-btn .cart-icon {
+    margin-right: 5px; /* Adjust spacing between icon and text */
+    color: white; /* Set the cart icon color to white */
+}
+.pagination {
+    margin-top: 20px;
+    
+}
+
+.pagination .step-links a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 10px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    text-decoration: none;
+    color: #aa7f19;
+}
+
+.pagination .step-links a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .step-links .current {
+    font-weight: bold;
+    margin: 0 5px;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenius Vocab</title>
+    <link rel="stylesheet" href="/static/trainer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>English Trainer</title>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+    <!-- Display username if the user is logged in -->
+        <p>Вы вошли в систему как - {{ request.user.username }}</p>
+        
+        <!-- Add a logout button -->
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Выйти</button>
+        </form>
+    {% endif %}
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="{% url 'web-home' %}">
+                        <img src="../static/logo.png" width="150px" alt="Logo" style="cursor: pointer;">
+                    </a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'web-home' %}">Home</a></li>
+                        <li><a href="{% url 'vocabulary-cards' %}">Vocabulary</a></li>
+                        <li><a href="{% url 'info_form_view' %}">Contact</a></li>
+                        <li><a href="{% url 'login' %}">Log in</a></li>
+                    </ul>
+                </nav>
+                <img src="" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="history">
+        <!-- <h1>Hahaha</h1> -->
+        {% if request.user.is_authenticated %}
+            <!-- Display training history if the user is logged in -->
+            <p>Correct Answers: {{ training_history.correct_count }}</p>
+            <p>Incorrect Answers: {{ training_history.incorrect_count }}</p>
+        {% else %}
+            <!-- If the user is not logged in, display a message or redirect them to the login page -->
+            <p>Please log in to view your training history.</p>
+            <!-- You can add a link to the login page here -->
+        {% endif %}
+    </div>
+    <div class="trainer">
+        <h1>English Trainer</h1>
+        <h2>{{ word.english_word }}</h2>
+
+        <div id="translationOptions">
+            {% for translation in translations %}
+                <button class="translationButton" data-translation="{{ translation }}">{{ translation }}</button>
+            {% endfor %}
+        </div>
+
+        <div id="responseMessage"></div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.translationButton').click(function() {
+                    console.log("Button clicked!"); // Add this line to check if the click event is being triggered
+                    var selectedTranslation = $(this).data('translation');
+                    var correctTranslation = "{{ correct_translation }}";
+                    var responseMessage = $('#responseMessage');
+
+                    if (selectedTranslation === correctTranslation) {
+                        displayMessage(responseMessage, 'Correct', 1000);
+                        updateTrainingHistory(true); // Call function to update training history with correct answer
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1500);
+                    } else {
+                        displayMessage(responseMessage, 'Incorrect. Try again.', 1000);
+                        updateTrainingHistory(false); // Call function to update training history with incorrect answer
+                    }
+                });
+
+                function displayMessage(element, message, duration) {
+                    element.text(message);
+                    element.fadeIn();
+                    setTimeout(function() {
+                        element.fadeOut();
+                    }, duration);
+                }
+
+                function updateTrainingHistory(isCorrect) {
+                    // Send AJAX request to update training history
+                    $.ajax({
+                        url: 'update_training_history',
+                        method: 'POST',
+                        data: {
+                            'is_correct': isCorrect ? 'true' : 'false',
+                            'csrfmiddlewaretoken': '{{ csrf_token }}'
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            // Optionally, you can handle the response here
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                }
+            });
+        </script>
+    </div>
+
+</body>
+</html>

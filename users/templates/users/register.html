@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+<body>
+    <div style="position: absolute; top: 20px; left: 20px;">
+        <a href="{% url 'web-home' %}">
+            <img src="../static/logo.png" width="150px" alt="Logo" style="cursor: pointer;">
+        </a>
+    </div>
+    <div class="wrapper">
+        <form method="post">
+            <h1>Register</h1>
+            {% csrf_token %}
+            <div class="input-box">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="input-box">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="input-box">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <div class="register-link">
+            <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>

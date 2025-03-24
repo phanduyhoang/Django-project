@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenius Vocab</title>
+    <link rel="stylesheet" href="/static/cards.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to speak the text content using SpeechSynthesis with custom voice attributes
+            function speakText(text, pitch = 1.0, rate = 1.0, volume = 1.0) {
+                var utterance = new SpeechSynthesisUtterance(text);
+                
+                // Set pitch, rate, and volume properties
+                utterance.pitch = pitch;
+                utterance.rate = rate;
+                utterance.volume = volume;
+                
+                // Speak the utterance
+                window.speechSynthesis.speak(utterance);
+            }
+    
+            // Add click event listener to each .col-4 element
+            var wordItems = document.querySelectorAll('.col-4');
+            wordItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    // Get the text content of the word-english-word element
+                    var englishWord = item.querySelector('.word-english-word').textContent;
+                    
+                    // Example: Speak English word with custom voice attributes
+                    speakText(englishWord, 5.0, 0.9, 0.8); // Example: higher pitch, slower rate, lower volume
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to speak text using SpeechSynthesis API with customizable voice attributes
+            function speakText(text, pitch = 1.0, rate = 1.0, volume = 1.0) {
+                var utterance = new SpeechSynthesisUtterance(text);
+                utterance.pitch = pitch;   // Set pitch (default: 1.0)
+                utterance.rate = rate;     // Set rate (default: 1.0)
+                utterance.volume = volume; // Set volume (default: 1.0)
+                window.speechSynthesis.speak(utterance);
+            }
+
+            // Add click event listener to all elements with class "listen-button"
+            var listenButtons = document.querySelectorAll('.listen-button');
+            listenButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Find the associated word text to speak
+                    var textElement = button.parentElement.previousElementSibling.querySelector('.word-text');
+                    if (textElement && textElement.textContent.trim() !== '') {
+                        var textToSpeak = textElement.textContent.trim();
+                        // Speak text with custom voice attributes
+                        speakText(textToSpeak, 5.5, 0.9, 0.8); // Example: higher pitch, slower rate, lower volume
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="{% url 'web-home' %}">
+                        <img src="../static/logo.png" width="150px" alt="Logo" style="cursor: pointer;">
+                    </a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'web-home' %}">Home</a></li>
+                        <li><a href="{% url 'vocabulary-cards' %}">Vocabulary</a></li>
+                        <li><a href="{% url 'info_form_view' %}">Contact</a></li>
+                        <li><a href="{% url 'login' %}">Log in</a></li>
+                    </ul>
+                </nav>
+                <img src="" alt="">
+            </div>
+        </div>
+    </div>
+    {% if request.user.is_authenticated %}
+    <!-- Display username if the user is logged in -->
+        <p>Вы вошли в систему как - {{ request.user.username }}</p>
+        
+        <!-- Add a logout button -->
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Выйти</button>
+        </form>
+    {% endif %}
+    <div class="categories">
+        <h1>Word List</h1>
+        <div class="small-container">
+            <h2 class="title">Look at this</h2>
+
+            <div class="row-product">
+                {% for word in words %}
+                    <div class="col-4">
+                            <div class="image-container">
+                                <img src="{{ word.image.url }}" alt="Product Image">
+                                <div class="best-price-label">
+                                    <span class="best-price-text">&nbsp;Work hard!</span>
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                            </div>
+                            <div class="text-content">
+                                <h4 class="word-english-word">{{ word.english_word }}</h4>
+                                <h4 class="word-translation">{{ word.russian_translation }}</h4>
+                                <h4 class="word-text">{{ word.text }}</h4>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var productNameElements = document.querySelectorAll('.product-name');
+                                        
+                                        productNameElements.forEach(function(element) {
+                                            var text = element.textContent;
+                                            var limit = 35; // Set your character limit here
+                                
+                                            // Calculate the number of spaces needed to reach the limit
+                                            var spacesToAdd = Math.max(0, limit - text.length);
+                                
+                                            if (spacesToAdd > 0) {
+                                                // Append non-breaking space characters to the end of the text
+                                                var paddedText = text + '&nbsp;'.repeat(spacesToAdd);
+                                                element.innerHTML = paddedText;
+                                            } else if (text.length > limit) {
+                                                // Truncate text if it exceeds the limit
+                                                var truncatedText = text.substring(0, limit) + '...';
+                                                element.textContent = truncatedText;
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </div>
+                            <div class="add-to-cart-wrapper">
+            
+                                <!-- Listen button to trigger text-to-speech for word.text -->
+                                <button class="listen-button">
+                                    <i class="fas fa-volume-up icon" style="margin-right: 8px;"></i>
+ <!-- Speaker icon -->
+                                    Listen
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+
+                    {% if forloop.counter|divisibleby:4 and not forloop.last %}
+                        </div><div class="row-product">
+                    {% endif %}
+                {% endfor %}
+                
+            </div>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if words.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ words.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ words.number }} of {{ words.paginator.num_pages }}.
+                    </span>
+            
+                    {% if words.has_next %}
+                        <a href="?page={{ words.next_page_number }}">next</a>
+                        <a href="?page={{ words.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- {% if words %}
+        <ul>
+            {% for word in words %}
+                <li>
+                    <strong>{{ word.english_word }}</strong> - {{ word.russian_translation }}
+                    {% if word.text %}
+                        <p>{{ word.text }}</p>
+                    {% endif %}
+                    {% if word.image %}
+                        <img src="{{ word.image.url }}" alt="{{ word.english_word }}">
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No words found.</p>
+    {% endif %} -->
+</body>
+</html>

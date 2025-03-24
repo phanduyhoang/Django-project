@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+</head>
+<body>
+    <div style="position: absolute; top: 20px; left: 20px;">
+        <a href="{% url 'web-home' %}">
+            <img src="../static/logo.png" width="150px" alt="Logo" style="cursor: pointer;">
+        </a>
+    </div>
+
+    <div class="wrapper">
+        <h1 class="title">Login</h1>
+        {% if messages %}
+            <div class="message-container">
+                {% for message in messages %}
+                    <div class="message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <form class="form" method="post">
+            {% csrf_token %}
+            <div class="input-box">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="input-box">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <button class="btn" type="submit">Login</button>
+        </form>
+        
+        <!-- Registration link -->
+        <div class="register-link">
+            <p>Нет аккаунта? <a href="{% url 'register' %}" class="register">Зарегистрируйтесь здесь</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

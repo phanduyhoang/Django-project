@@ -1,0 +1,167 @@
+/* styles.css */
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    min-height: 100px;
+    background: url('body.jpg') no-repeat;
+    background-size:cover;
+    background-position: center;
+}
+.header {
+    display: flex;
+}
+.navbar {
+    width: 100%;
+    margin-right:100px;
+    display: flex;
+    align-items: center;
+    padding:0 5px;
+    /* padding-top: 10px; */
+    /* background-color: rgba(255, 229, 229, 1); 
+    backdrop-filter: blur(10px); 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; */
+    /* border-radius: 0 0 20px 20px;  */
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul {
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+p {
+    color: #555;
+}
+
+
+
+
+.container {
+    width: 40%;
+    margin: 0 auto;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    border-radius: 10px;
+    padding:30px 20px;
+}
+
+h2 {
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+.container .form-field form {
+    width: 100%;
+    background: #06ff13;
+}
+
+.form-field {
+    margin-bottom: 30px;
+}
+
+.form-field label {
+    color: #fff;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    padding: 15px 5px 20px 30px;
+    /* border-radius: 10px; */
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 20px;
+    color: #fff;
+}
+
+button {
+    width:100%;
+    height:45px;
+    background:#fff;
+    border:none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+    cursor:pointer;
+    font-size:16px;
+    color:#333;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Updated styles for the dropdown */
+.form-field select {
+    width: 100%;
+    padding: 15px 5px 20px 30px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 20px;
+    color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+}
+
+/* Create a custom dropdown arrow using pseudo-elements */
+.form-field select::after {
+    content: '\25BC';  /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;  /* Ensure the arrow doesn't interfere with clicking the select */
+}
+
+/* Add this style for the dropdown menu options */
+.form-field select option {
+    background: #06ff13; /* Set the background color for dropdown options */
+    color: #fff; /* Set the text color for dropdown options */
+}
+
+/* Additional styling to prevent background color change on dropdown hover and focus */
+.form-field select:hover,
+.form-field select:focus {
+    background: transparent !important;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" type="text/css" href="../static/contact.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div style="position: absolute; top: 20px; left: 20px;">
+        <a href="{% url 'web-home' %}">
+            <img src="../static/logo.png" width="150px" alt="Logo" style="cursor: pointer;">
+        </a>
+    </div>
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form class="custom-form" method="post" action="{% url 'info_form_view' %}">
+            {% csrf_token %}
+            
+            <div class="form-field">
+                <label for="{{ form.name.id_for_label }}">
+                    <i class='bx bxs-user'></i> Name
+                </label>
+                <input type="text" name="{{ form.name.name }}" id="{{ form.name.id_for_label }}" placeholder="Your Name" />
+            </div>
+
+            <div class="form-field">
+                <label for="{{ form.email.id_for_label }}">
+                    <i class='bx bxs-envelope'></i> Email
+                </label>
+                <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" placeholder="Your Email" />
+            </div>
+
+            <div class="form-field">
+                <label for="{{ form.phone_number.id_for_label }}">
+                    <i class='bx bxs-phone'></i> Phone Number
+                </label>
+                <input type="tel" name="{{ form.phone_number.name }}" id="{{ form.phone_number.id_for_label }}" placeholder="Your Phone Number" />
+            </div>
+
+            <div class="form-field">
+                <label for="{{ form.comment.id_for_label }}">
+                    <i class='bx bxs-comment'></i> Comment
+                </label>
+                <textarea name="{{ form.comment.name }}" id="{{ form.comment.id_for_label }}" placeholder="Your Comment"></textarea>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
